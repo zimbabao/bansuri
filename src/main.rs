@@ -1,5 +1,6 @@
 
 extern crate getopts;
+extern crate bansuri_lib;
 
 use std::env;
 use std::io;
@@ -35,6 +36,8 @@ fn parse_file(input: Option<String>, output: Option<String>) {
       },
       None => Box::new(io::stdin()) as Box<io::Read>,
     };
+
+    bansuri_lib::parse_js_reader(input_stream, output_stream);
 }
 
 fn main() {

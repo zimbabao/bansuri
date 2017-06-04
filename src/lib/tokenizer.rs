@@ -1,14 +1,14 @@
-use std::borrow::{Cow, ToOwned};
 
-pub enum Tokens<'a> {
-  BooleanLiteral(Cow<'a, str>),
-  EOF(Cow<'a, char>),
-  Identifier(Cow<'a, str>),
-  Keyword(Cow<'a, str>),
-  NullLiteral(Cow<'a, str>),
-  NumericLiteral(Cow<'a, str>),
-  Punctuator(Cow<'a, str>),
-  StringLiteral(Cow<'a, str>),
-  RegularExpression(Cow<'a, str>),
-  Template(Cow<'a, str>),
+
+
+//TODO: How to get name of the enum
+// or shall we keep the old way of keeping a table map
+
+
+struct Tokenizer {
+
+}
+
+impl Iterator for Tokenizer {
+
 }

@@ -10,4 +10,8 @@ getopts = "0.2"
 
 [lib]
 name = "bansuri_lib"
-path = "src/lib/lib.rs"
+path = "src/lib/bansuri.rs"
+
+[[bin]]
+name = "bansuri_cli"
+path = "src/main.rs"
