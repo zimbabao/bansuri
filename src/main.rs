@@ -2,6 +2,7 @@
 extern crate getopts;
 
 use std::env;
+use std::io;
 use std::error::Error;
 use std::fs::File;
 use std::path::Path;
