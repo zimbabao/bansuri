@@ -1,6 +1,6 @@
 use std::borrow::{Cow, ToOwned};
 
-pub enum Tokens<'a> {
+pub enum Token<'a> {
   BooleanLiteral(Cow<T, str>, name: ),
   EOF(Cow<'a, char>),
   Identifier(Cow<'a, str>),
