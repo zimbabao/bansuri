@@ -88,3 +88,10 @@ trait Scanner {
   pub fn lex() -> RawToken;
 
 }
+
+#[cfg(test)]
+mod lexerTests {
+    #[test]
+    fn exploration() {
+    }
+}
