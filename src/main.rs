@@ -15,7 +15,7 @@ fn print_usage(program: &str, opts: Options) {
 }
 
 fn parse_file(input: Option<String>, output: Option<String>) {
-  let output_stream = match output {
+  let mut output_stream = match output {
       Some(x) => {
         let path = Path::new(&x);
         match File::create(path) {
@@ -26,7 +26,7 @@ fn parse_file(input: Option<String>, output: Option<String>) {
       None => Box::new(io::stdout()) as Box<io::Write>,
     };
 
-  let input_stream = match input {
+  let mut input_stream = match input {
       Some(x) => {
         let path = Path::new(&x);
         match File::open(path, ) {
@@ -37,7 +37,7 @@ fn parse_file(input: Option<String>, output: Option<String>) {
       None => Box::new(io::stdin()) as Box<io::Read>,
     };
 
-    bansuri_lib::parse_js_reader(input_stream, output_stream);
+    bansuri_lib::parse_js_reader(&mut input_stream, &mut output_stream);
 }
 
 fn main() {
