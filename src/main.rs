@@ -1,13 +1,10 @@
-
-extern crate getopts;
-extern crate bansuri_lib;
-
 use std::env;
 use std::io;
 use std::error::Error;
 use std::fs::File;
 use std::path::Path;
 use getopts::Options;
+use bansuri;
 
 fn print_usage(program: &str, opts: Options) {
   let brief = format!("Usage: {} [options]", program);
@@ -37,7 +34,7 @@ fn parse_file(input: Option<String>, output: Option<String>) {
       None => Box::new(io::stdin()) as Box<io::Read>,
     };
 
-    bansuri_lib::parse_js_reader(&mut input_stream, &mut output_stream);
+    bansuri::parser::parse_js_reader(&mut input_stream, &mut output_stream);
 }
 
 fn main() {
