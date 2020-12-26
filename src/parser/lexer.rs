@@ -17,34 +17,34 @@ pub enum Token {
 }
 
 struct RawToken {
-  tokenType: Token,
+  token_type: Token,
   value: String,
-  lineNumber: usize,
-  lineStart: usize,
+  line_number: usize,
+  line_start: usize,
 }
 
 struct ScannerState {
   pub index: usize,
-  pub lineNumber: usize,
-  pub lineStart: usize,
+  pub line_number: usize,
+  pub line_start: usize,
 }
 
 pub struct Scanner {
   code: String, // Readonly
-  curlyStack: Vec<char>,
-  trackComment: bool,
-  lineNumber: usize,
-  lineStart: usize,
+  curly_stack: Vec<char>,
+  track_comment: bool,
+  line_number: usize,
+  line_start: usize,
 }
 
 impl Scanner {
-  pub fn new(code: String, errorHandler: &Fn()) -> Self {
+  pub fn new(code: String, error_handler: &Fn()) -> Self {
     Scanner {
       code: code,
-      curlyStack: Vec::<char>::new(),
-      lineNumber: 0,
-      lineStart: 0,
-      trackComment: true,
+      curly_stack: Vec::<char>::new(),
+      line_number: 0,
+      line_start: 0,
+      track_comment: true,
     }
   }
 }
@@ -116,9 +116,9 @@ trait ScannerTrait {
 impl ScannerTrait for Scanner {
   fn lex() -> RawToken {
     return RawToken {
-      lineNumber: 0,
-      lineStart: 1,
-      tokenType: Token::BooleanLiteral(true),
+      line_number: 0,
+      line_start: 1,
+      token_type: Token::BooleanLiteral(true),
       value: String::from("dcjksdhks"),
     }
   }
@@ -126,11 +126,8 @@ impl ScannerTrait for Scanner {
 
 }
 
-// struct
-// impl lexer::Scanner for lex
-
 #[cfg(test)]
-mod lexerTests {
+mod lexer_tests {
     #[test]
     fn exploration() {
     }
