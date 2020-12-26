@@ -16,22 +16,22 @@ fn parse_file(input: Option<String>, output: Option<String>) {
       Some(x) => {
         let path = Path::new(&x);
         match File::create(path) {
-          Err(why) => panic!("couldn't create {}: {}", path.display(), Error::description(&why)),
-          Ok(file) => Box::new(io::BufWriter::new(file)) as Box<io::Write>,
+          Err(why) => panic!("couldn't create {}: {}", path.display(), why.to_string()),
+          Ok(file) => Box::new(io::BufWriter::new(file)) as Box<dyn io::Write>,
         }
       },
-      None => Box::new(io::stdout()) as Box<io::Write>,
+      None => Box::new(io::stdout()) as Box<dyn io::Write>,
     };
 
   let mut input_stream = match input {
       Some(x) => {
         let path = Path::new(&x);
         match File::open(path, ) {
-          Err(why) => panic!("couldn't open {}: {}", path.display(), Error::description(&why)),
-          Ok(file) => Box::new(io::BufReader::new(file)) as Box<io::Read>,
+          Err(why) => panic!("couldn't open {}: {}", path.display(), why.to_string()),
+          Ok(file) => Box::new(io::BufReader::new(file)) as Box<dyn io::Read>,
         }
       },
-      None => Box::new(io::stdin()) as Box<io::Read>,
+      None => Box::new(io::stdin()) as Box<dyn io::Read>,
     };
 
     bansuri::parser::parse_js_reader(&mut input_stream, &mut output_stream);
